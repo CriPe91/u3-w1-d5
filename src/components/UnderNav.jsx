@@ -3,16 +3,16 @@ import { List } from "react-bootstrap-icons";
 import { Grid } from "react-bootstrap-icons";
 const UnderNav = () => (
   <>
-    <Container fluid className="d-flex justify-content-between">
-      <Row>
+    <Container fluid className="d-flex justify-content-between align-items-center">
+      <Row className="ms-4 mb-5">
         <Col className="d-flex align-items-center">
-          <h1 className="display-5 text-light mx-4">TV Shows</h1>
+          <h3 className="display-6 text-light mb-3">TV Shows</h3>
           <Dropdown>
-            <Dropdown.Toggle variant="warning" id="dropdown-basic">
+            <Dropdown.Toggle variant="warning" id="dropdown-basic" className="mx-3">
               Generi
             </Dropdown.Toggle>
 
-            <Dropdown.Menu>
+            <Dropdown.Menu variant="dark">
               <Dropdown.Item href="#/action-1">Movies</Dropdown.Item>
               <Dropdown.Item href="#/action-2">Series</Dropdown.Item>
               <Dropdown.Item href="#/action-3">Cartoon</Dropdown.Item>
@@ -20,8 +20,8 @@ const UnderNav = () => (
           </Dropdown>
         </Col>
       </Row>
-      <Row>
-        <Col className="d-flex align-items-center mx-4">
+      <Row className="me-5 mb-4">
+        <Col className="d-flex align-items-center">
           <Button variant="dark" className="border border-radius-1 mx-2">
             <List />
           </Button>

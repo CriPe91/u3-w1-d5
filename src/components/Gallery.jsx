@@ -1,36 +1,52 @@
 import { Component } from "react";
+import { Card, Col, Container, Row } from "react-bootstrap";
 
 class Gallery extends Component {
   state = {
-    movies: [],
+    moviePotter: [],
   };
 
-  Movies = () => {
+  handleMovies = () => {
     fetch("http://www.omdbapi.com/?apikey=28a9b9e8&s=Harry Potter")
       .then((response) => {
         if (response.ok) {
           return response.json();
         } else {
-          throw new Error("error");
+          throw new Error("FILM NON TROVATI");
         }
       })
+
       .then((movie) => {
         console.log(movie);
+
         if (movie.Search) {
-          this.setState({ movies: movie.Search });
+          this.setState({ moviePotter: movie.Search.slice(0, 6) });
         }
       })
       .catch((error) => {
-        console.log(error);
+        "ERROR", console.log(error);
       });
   };
 
   componentDidMount() {
-    this.Movies();
+    this.handleMovies();
   }
 
   render() {
-    return {};
+    return (
+      <Container fluid>
+        <h3 className="mb-4 mx-5 mt-5">Saga : Harry Potter</h3>
+        <Row xs={1} md={3} xl={6} className="mx-4">
+          {this.state.moviePotter.map((movie) => (
+            <Col key={movie.imdbID}>
+              <Card className="border-0">
+                <Card.Img variant="top" src={movie.Poster} />
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </Container>
+    );
   }
 }
 export default Gallery;
